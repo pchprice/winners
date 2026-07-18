@@ -12,20 +12,17 @@
             --text-dark: #333333;
             --border-color: #dddddd;
         }
-
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
         body {
             background-color: var(--bg-light);
             color: var(--text-dark);
             line-height: 1.6;
         }
-
         header {
             background: linear-gradient(135deg, var(--pch-orange), var(--pch-dark-orange));
             color: white;
@@ -33,14 +30,12 @@
             text-align: center;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-
         .logo-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin-bottom: 15px;
         }
-
         .pch-logo-css {
             width: 70px;
             height: 70px;
@@ -52,7 +47,6 @@
             align-items: center;
             background-color: transparent;
         }
-
         .pch-logo-css::before {
             content: '';
             position: absolute;
@@ -64,7 +58,6 @@
             transform: rotate(45deg);
             background: transparent;
         }
-
         .pch-logo-css::after {
             content: '';
             position: absolute;
@@ -75,7 +68,6 @@
             border-radius: 0 0 8px 8px;
             transform: translateY(4px);
         }
-
         .logo-text {
             font-size: 24px;
             font-weight: 900;
@@ -83,14 +75,12 @@
             margin-top: 5px;
             color: white;
         }
-
         header h1 {
             font-size: 28px;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             margin-top: 10px;
         }
-
         .container {
             max-width: 1000px;
             margin: 30px auto;
@@ -99,7 +89,6 @@
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
-
         .congrats-banner {
             background-color: #fff9e6;
             border-left: 5px solid #ffcc00;
@@ -109,7 +98,6 @@
             font-size: 18px;
             font-weight: 600;
         }
-
         .controls {
             display: flex;
             flex-wrap: wrap;
@@ -120,13 +108,11 @@
             padding-bottom: 15px;
             border-bottom: 1px solid var(--border-color);
         }
-
         .search-box {
             position: relative;
             flex: 1;
             min-width: 280px;
         }
-
         .search-box input {
             width: 100%;
             padding: 10px 40px 10px 15px;
@@ -134,7 +120,6 @@
             border-radius: 4px;
             font-size: 15px;
         }
-
         .search-box::after {
             content: '🔍';
             position: absolute;
@@ -143,13 +128,11 @@
             transform: translateY(-50%);
             pointer-events: none;
         }
-
         .sort-group {
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
         }
-
         .sort-group select {
             padding: 10px 15px;
             border: 1px solid var(--border-color);
@@ -158,58 +141,47 @@
             cursor: pointer;
             font-size: 14px;
         }
-
         .results-count {
             font-weight: bold;
             color: #666;
             margin-bottom: 15px;
         }
-
         .table-responsive {
             overflow-x: auto;
         }
-
         table {
             width: 100%;
             border-collapse: collapse;
             text-align: left;
             margin-bottom: 20px;
         }
-
         th {
             background-color: #f2f2f2;
             padding: 12px 15px;
             font-weight: 600;
             border-bottom: 2px solid var(--border-color);
         }
-
         td {
             padding: 12px 15px;
             border-bottom: 1px solid var(--border-color);
             font-size: 15px;
         }
-
-        /* Alternating striping for 145 rows layout comfort */
         tr:nth-child(even) {
             background-color: #fcfcfc;
         }
-
         tr:hover {
             background-color: #f1f1f1;
         }
-
         tr td:nth-child(4) {
             font-weight: bold;
             color: #2e7d32;
         }
-
         .pagination-info {
             text-align: center;
             color: #666;
             margin-top: 20px;
             font-size: 14px;
         }
-
         footer {
             text-align: center;
             padding: 40px 20px;
@@ -218,20 +190,17 @@
             color: #666;
             font-size: 14px;
         }
-
         footer a {
             color: var(--pch-orange);
             text-decoration: none;
             margin: 0 10px;
         }
-
         footer a:hover {
             text-decoration: underline;
         }
     </style>
 </head>
 <body>
-
     <header>
         <div class="logo-container">
             <div class="pch-logo-css"></div>
@@ -240,7 +209,6 @@
         <h1>Publishers Clearing House</h1>
         <p style="letter-spacing: 2px; font-weight: 300; margin-top: 5px;">WINNERS LIST</p>
     </header>
-
     <div class="container">
         <div class="congrats-banner">
             🏆 Congratulations to Our Prize Winners!
@@ -248,20 +216,19 @@
                 Browse our latest prize winners below. Showing 145 Winners
             </div>
         </div>
-
         <div class="controls">
             <div class="search-box">
                 <input type="text" id="searchInput" placeholder="Search by name, city or state...">
             </div>
             <div class="sort-group">
-                <select id="sortRecent"><option>Most Recent ▼</option></select>
-                <select id="sortPrize"><option>Prize Amount ▼</option></select>
-                <select id="sortState"><option>State ▼</option></select>
+                <select id="sortOrder">
+                    <option value="recent">Most Recent ▼</option>
+                    <option value="prize">Prize Amount ▼</option>
+                    <option value="state">State ▼</option>
+                </select>
             </div>
         </div>
-
-        <div class="results-count">Results: 145 Winners</div>
-
+        <div class="results-count" id="resultsCount">Results: 145 Winners</div>
         <div class="table-responsive">
             <table>
                 <thead>
@@ -273,17 +240,11 @@
                         <th>Date Won</th>
                     </tr>
                 </thead>
-                <tbody id="winnersTableBody">
-                    <!-- 145 Rows load instantly here -->
-                </tbody>
+                <tbody id="winnersTableBody"></tbody>
             </table>
         </div>
-
-        <div class="pagination-info">
-            Showing 1–145 of 145 winners
-        </div>
+        <div class="pagination-info" id="paginationInfo">Showing 1–145 of 145 winners</div>
     </div>
-
     <footer>
         <p>© Publishers Clearing House</p>
         <p style="margin-top: 10px;">
@@ -292,18 +253,78 @@
             <a href="#">Contact Us</a>
         </p>
     </footer>
-
     <script>
         const firstNames = ["James", "Mary", "John", "Patricia", "Robert", "Jennifer", "Michael", "Linda", "William", "Elizabeth", "David", "Barbara", "Richard", "Susan", "Joseph", "Jessica", "Thomas", "Sarah", "Charles", "Karen", "Christopher", "Nancy", "Matthew", "Lisa", "Daniel", "Betty", "Anthony", "Margaret", "Mark", "Sandra", "Donald", "Ashley", "Steven", "Kimberly", "Paul", "Emily", "Andrew", "Donna", "Joshua", "Michelle", "Kenneth", "Carol", "Kevin", "Amanda", "Brian", "Dorothy", "Timothy", "Melissa", "Ronald", "Deborah"];
         const lastNames = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson", "Thomas", "Taylor", "Moore", "Jackson", "Martin", "Lee", "Perez", "Thompson", "White", "Harris", "Sanchez", "Clark", "Ramirez", "Lewis", "Robinson", "Walker", "Young", "Allen", "King", "Wright", "Scott", "Torres", "Nguyen", "Hill", "Flores", "Green", "Adams", "Nelson", "Baker", "Hall", "Rivera", "Campbell", "Mitchell", "Carter", "Roberts"];
-        const locations = [
-            "Dallas, TX", "Miami, FL", "Phoenix, AZ", "Chicago, IL", "Seattle, WA", "Tampa, FL", "Denver, CO", "Columbus, OH", "Atlanta, GA", "Boston, MA",
-            "Houston, TX", "Austin, TX", "San Jose, CA", "Detroit, MI", "Las Vegas, NV", "Orlando, FL", "Nashville, TN", "Charlotte, NC", "Portland, OR", "Sacramento, CA",
-            "Philadelphia, PA", "San Antonio, TX", "San Diego, CA", "Baltimore, MD", "Indianapolis, IN", "Milwaukee, WI", "Memphis, TN", "Kansas City, MO", "New York, NY", "Los Angeles, CA"
-        ];
+        const locations = ["Dallas, TX", "Miami, FL", "Phoenix, AZ", "Chicago, IL", "Seattle, WA", "Tampa, FL", "Denver, CO", "Columbus, OH", "Atlanta, GA", "Boston, MA", "Houston, TX", "Austin, TX", "San Jose, CA", "Detroit, MI", "Las Vegas, NV", "Orlando, FL", "Nashville, TN", "Charlotte, NC", "Portland, OR", "Sacramento, CA", "Philadelphia, PA", "San Antonio, TX", "San Diego, CA", "Baltimore, MD", "Indianapolis, IN", "Milwaukee, WI", "Memphis, TN", "Kansas City, MO", "New York, NY", "Los Angeles, CA"];
         const prizes = ["$1,000,000", "$250,000", "$100,000", "$50,000", "$25,000", "$10,000", "$5,000", "$2,500", "$1,000", "$500"];
         const dates = ["Jul 15", "Jul 14", "Jul 13", "Jul 12", "Jul 11", "Jul 10", "Jul 09", "Jul 08", "Jul 07", "Jul 06", "Jul 05", "Jul 04", "Jul 03", "Jul 02", "Jul 01"];
+        const exactWinners = [
+            { name: "John Smith", loc: "Dallas, TX", prize: "$1,000,000", numericPrize: 1000000, date: "Jul 15", dayValue: 15 },
+            { name: "Sarah Johnson", loc: "Miami, FL", prize: "$25,000", numericPrize: 25000, date: "Jul 15", dayValue: 15 },
+            { name: "Michael Brown", loc: "Phoenix, AZ", prize: "$10,000", numericPrize: 10000, date: "Jul 14", dayValue: 14 },
+            { name: "Linda Davis", loc: "Chicago, IL", prize: "$5,000", numericPrize: 5000, date: "Jul 14", dayValue: 14 },
+            { name: "Robert Wilson", loc: "Seattle, WA", prize: "$1,000", numericPrize: 1000, date: "Jul 13", dayValue: 13 },
+            { name: "Jennifer Lee", loc: "Tampa, FL", prize: "$2,500", numericPrize: 2500, date: "Jul 13", dayValue: 13 },
+            { name: "David Clark", loc: "Denver, CO", prize: "$50,000", numericPrize: 50000, date: "Jul 12", dayValue: 12 },
+            { name: "Karen Thomas", loc: "Columbus, OH", prize: "$1,000", numericPrize: 1000, date: "Jul 10", dayValue: 10 }
+        ];
 
-        const tableBody = document.getElementById('winnersTableBody');
-        let htmlContent = "";
+        let allWinners = [];
 
+        for (let i = 1; i <= 145; i++) {
+            if (i <= 8) {
+                allWinners.push(exactWinners[i - 1]);
+            } else {
+                const randomFirst = firstNames[(i * 3) % firstNames.length];
+                const randomLast = lastNames[(i * 7) % lastNames.length];
+                const randomLoc = locations[(i * 13) % locations.length];
+                const rawPrizeString = prizes[(i * 17) % prizes.length];
+                const numericPrizeValue = parseInt(rawPrizeString.replace(/[\$,]/g, ''));
+                const randomDate = dates[(i * 23) % dates.length];
+                const dayValueInt = parseInt(randomDate.replace('Jul ', ''));
+
+                allWinners.push({
+                    name: randomFirst + " " + randomLast,
+                    loc: randomLoc,
+                    prize: rawPrizeString,
+                    numericPrize: numericPrizeValue,
+                    date: randomDate,
+                    dayValue: dayValueInt
+                });
+            }
+        }
+
+        function displayWinners(winnersArray) {
+            const tableBody = document.getElementById('winnersTableBody');
+            let htmlContent = "";
+            winnersArray.forEach((winner, index) => {
+                htmlContent += "<tr><td>" + (index + 1) + "</td><td>" + winner.name + "</td><td>" + winner.loc + "</td><td>" + winner.prize + "</td><td>" + winner.date + "</td></tr>";
+            });
+            tableBody.innerHTML = htmlContent;
+            document.getElementById('resultsCount').innerText = "Results: " + winnersArray.length + " Winners";
+            document.getElementById('paginationInfo').innerText = "Showing 1–" + winnersArray.length + " of " + winnersArray.length + " winners";
+        }
+
+        function filterAndSort() {
+            let searchFilter = document.getElementById('searchInput').value.toUpperCase();
+            let sortValue = document.getElementById('sortOrder').value;
+            let processedList = allWinners.filter(winner => {
+                return winner.name.toUpperCase().includes(searchFilter) || winner.loc.toUpperCase().includes(searchFilter);
+            });
+            if (sortValue === "recent") {
+                processedList.sort((a, b) => b.dayValue - a.dayValue);
+            } else if (sortValue === "prize") {
+                processedList.sort((a, b) => b.numericPrize - a.numericPrize);
+            } else if (sortValue === "state") {
+                processedList.sort((a, b) => a.loc.localeCompare(b.loc));
+            }
+            displayWinners(processedList);
+        }
+
+        document.getElementById('searchInput').addEventListener('input', filterAndSort);
+        document.getElementById('sortOrder').addEventListener('change', filterAndSort);
+        displayWinners(allWinners);
+    </script>
+</body>
+</html>
