@@ -189,8 +189,13 @@
             font-size: 15px;
         }
 
+        /* Alternating striping for 145 rows layout comfort */
+        tr:nth-child(even) {
+            background-color: #fcfcfc;
+        }
+
         tr:hover {
-            background-color: #f9f9f9;
+            background-color: #f1f1f1;
         }
 
         tr td:nth-child(4) {
@@ -302,48 +307,3 @@
         const tableBody = document.getElementById('winnersTableBody');
         let htmlContent = "";
 
-        const exactWinners = [
-            { name: "John Smith", loc: "Dallas, TX", prize: "$1,000,000", date: "Jul 15" },
-            caution.
-
-{ name: "Sarah Johnson", loc: "Miami, FL", prize: "$25,000", date: "Jul 15" },
-{ name: "Michael Brown", loc: "Phoenix, AZ", prize: "$10,000", date: "Jul 14" },
-{ name: "Linda Davis", loc: "Chicago, IL", prize: "$5,000", date: "Jul 14" },
-{ name: "Robert Wilson", loc: "Seattle, WA", prize: "$1,000", date: "Jul 13" },
-{ name: "Jennifer Lee", loc: "Tampa, FL", prize: "$2,500", date: "Jul 13" },
-{ name: "David Clark", loc: "Denver, CO", prize: "$50,000", date: "Jul 12" },
-{ name: "Karen Thomas", loc: "Columbus, OH", prize: "$1,000", date: "Jul 10" }
-];
-for (let i = 1; i <= 145; i++) {
-let winner;
-if (i <= 8) {
-winner = exactWinners[i - 1];
-} else {
-const randomFirst = firstNames[(i * 3) % firstNames.length];
-const randomLast = lastNames[(i * 7) % lastNames.length];
-const randomLoc = locations[(i * 13) % locations.length];
-const randomPrize = prizes[(i * 17) % prizes.length];
-const randomDate = dates[(i * 23) % dates.length];
-winner = { name: ${randomFirst} ${randomLast}, loc: randomLoc, prize: randomPrize, date: randomDate };
-}
-htmlContent += <tr> <td>${i}</td> <td>${winner.name}</td> <td>${winner.loc}</td> <td>${winner.prize}</td> <td>${winner.date}</td> </tr>;
-}
-tableBody.innerHTML = htmlContent;
-// Fully corrected search filter engine
-document.getElementById('searchInput').addEventListener('keyup', function() {
-let filter = this.value.toUpperCase();
-let rows = tableBody.getElementsByTagName('tr');
-for (let i = 0; i < rows.length; i++) {
-let nameCell = rows[i].getElementsByTagName('td')[1];
-let locCell = rows[i].getElementsByTagName('td')[2];
-if (nameCell && locCell) {
-let nameText = nameCell.textContent || nameCell.innerText;
-let locText = locCell.textContent || locCell.innerText;
-if (nameText.toUpperCase().indexOf(filter) > -1 || locText.toUpperCase().indexOf(filter) > -1) {
-rows[i].style.display = "";
-} else {
-rows[i].style.display = "none";
-}
-}
-}
-});
