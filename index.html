@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publishers Clearing House - Winners List</title>
+    <style>
+        :root {
+            --pch-orange: #e67300;
+            --pch-dark-orange: #cc6600;
+            --bg-light: #f9f9f9;
+            --text-dark: #333333;
+            --border-color: #dddddd;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Header Area */
+        header {
+            background: linear-gradient(135deg, var(--pch-orange), var(--pch-dark-orange));
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Dynamic CSS Logo Complementary to the Page Layout */
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .pch-logo-css {
+            width: 70px;
+            height: 70px;
+            border: 5px solid white;
+            border-radius: 12px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: transparent;
+        }
+
+        /* House Roof Top Shape */
+        .pch-logo-css::before {
+            content: '';
+            position: absolute;
+            top: -18px;
+            width: 44px;
+            height: 44px;
+            border-top: 5px solid white;
+            border-left: 5px solid white;
+            transform: rotate(45deg);
+            background: transparent;
+        }
+
+        /* Envelope Inner Flap Shape */
+        .pch-logo-css::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 22px;
+            border: 4px solid white;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            transform: translateY(4px);
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            margin-top: 5px;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 28px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 10px;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .congrats-banner {
+            background-color: #fff9e6;
+            border-left: 5px solid #ffcc00;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 25px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /* Filter Controls */
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 40px 10px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 15px;
+        }
+
+        .search-box::after {
+            content: '🔍';
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .sort-group {
+          display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .sort-group select {
+            padding: 10px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background-color: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .results-count {
+            font-weight: bold;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        /* Table Design */
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            padding: 12px 15px;
+            font-weight: 600;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 15px;
+        }
+
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        tr td:nth-child(4) {
+            font-weight: bold;
+            color: #2e7d32;
+        }
+
+        /* Pagination & Footer */
+        .pagination-info {
+            text-align: center;
+            color: #666;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+            border-top: 1px solid var(--border-color);
+            color: #666;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: var(--pch-orange);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <div class="pch-logo-css"></div>
+            <div class="logo-text">PCH</div>
+        </div>
+        <h1>Publishers Clearing House</h1>
+        <p style="letter-spacing: 2px; font-weight: 300; margin-top: 5px;">WINNERS LIST</p>
+    </header>
+
+    <div class="container">
+        <div class="congrats-banner">
+            🏆 Congratulations to Our Prize Winners!
+            <div style="font-weight: normal; font-size: 15px; margin-top: 5px; color: #555;">
+                Browse our latest prize winners below. Showing 145 Winners
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search by name, city or state...">
+            </div>
+            <div class="sort-group">
+                <select id="sortRecent"><option>Most Recent ▼</option></select>
+                <select id="sortPrize"><option>Prize Amount ▼</option></select>
+                <select id="sortState"><option>State ▼</option></select>
+            </div>
+        </div>
+
+        <div class="results-count">Results: 145 Winners</div>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Winner Name</th>
+                        <th>City, State</th>
+                        <th>Prize Won</th>
+                        <th>Date Won</th>
+                    </tr>
+                </thead>
+                <tbody id="winnersTableBody">
+                    <!-- Javascript will insert 145 rows instantly here -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagination-info">
+            Showing 1–145 of 145 winners
+        </div>
+    </div>
+
+    <footer>
+        <p>© Publishers Clearing House</p>
+        <p style="margin-top: 10px;">
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">Official Rules</a> | 
+            <a href="#">Contact Us</a>
+        </p>
+    </footer>
+
+    <script>
+        // Data arrays for realistic random generation up to 145 names
+
+          const firstNames = ["John", "Sarah", "Michael", "Linda", "Robert", "Jennifer", "David", "Karen", "James", "Mary", "William", "Patricia", "Charles", "Barbara", "Richard", "Susan", "Joseph", "Jessica", "Thomas", "Margaret", "Christopher", "Lisa", "Matthew", "Betty", "Donald"];
+        const lastNames = ["Smith", "Johnson", "Brown", "Davis", "Wilson", "Lee", "Clark", "Thomas", "Miller", "Garcia", "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson", "Thomas", "Taylor", "Moore", "Jackson", "Martin", "Lee", "Perez", "Thompson"];
+        const locations = [
+            "Dallas, TX", "Miami, FL", "Phoenix, AZ", "Chicago, IL", "Seattle, WA", "Tampa, FL", "Denver, CO", "Columbus, OH", "Atlanta, GA", "Boston, MA",
+            "Houston, TX", "Austin, TX", "San Jose, CA", "Detroit, MI", "Las Vegas, NV", "Orlando, FL", "Nashville, TN", "Charlotte, NC", "Portland, OR", "Sacramento, CA",
+            "Philadelphia, PA", "San Antonio, TX", "San Diego, CA", "Baltimore, MD", "Indianapolis, IN", "Milwaukee, WI", "Memphis, TN", "Kansas City, MO"
+        ];
+        const prizes = ["$1,000,000", "$50,000", "$25,000", "$10,000", "$5,000", "$2,500", "$1,000"];
+        const dates = ["Jul 15", "Jul 14", "Jul 13", "Jul 12", "Jul 11", "Jul 10", "Jul 09", "Jul 08", "Jul 07", "Jul 06", "Jul 05"];
+
+        const tableBody = document.getElementById('winnersTableBody');
+        let htmlContent = "";
+
+        // Seed with your exact first 8 entries to maintain visual integrity
+        const exactWinners = [
+            { name: "John Smith", loc: "Dallas, TX", prize: "$1,000,000", date: "Jul 15" },
+            { name: "Sarah Johnson", loc: "Miami, FL", prize: "$25,000", date: "Jul 15" },
+            { name: "Michael Brown", loc: "Phoenix, AZ", prize: "$10,000", date: "Jul 14" },
+          
+          
